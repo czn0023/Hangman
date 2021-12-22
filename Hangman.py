@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[4]:
+
+
 #Declare Variables
 open(r"words.txt")
 import random
@@ -12,17 +18,17 @@ while playagain == True:
     while hangman in pickedhangmen:
         hangman = random.choice(list(open(r"words.txt")))
     pickedhangmen.append(hangman)
-    print(pickedhangmen)
+    #print(pickedhangmen)
     brokenhangman = list(hangman)
     blankhangman = "-" * len(hangman)
-    print(hangman)
+    #print(hangman)
     guesses = 7
-    print(brokenhangman)
-    print(blankhangman)
+    #print(brokenhangman)
+    #print(blankhangman)
     print("Try to guess the word!")
     #If guesses reach 0, end game
     while guesses > 0:
-        print("You have " + str(guesses) + " guesses left.")
+        print(f"You have {guesses} guesses left.")
         userword = str(input("Guess a letter or the answer:"))
         #Case is kept by using upper for all inputs and the hangman
         userword = userword.upper()
@@ -42,7 +48,7 @@ while playagain == True:
         else:
             #Add user guess to list for later use
             if userword in brokenhangman:
-                print("That letter is in the hangman!")
+                print(f"{userword} is in the hangman!")
                 #Display guessed letters and their location in the hangman
                 index = 0
                 while index != len(brokenhangman):
@@ -54,23 +60,31 @@ while playagain == True:
                 print(index)
                 print(blankhangman)
             else:
-                print("That letter is not in the hangman.")
+                print(f"{userword} is not in the hangman.")
                 guesses = guesses - 1
                 print(blankhangman)
     if guesses <= 1:
         print("You've ran out of guesses! You lose.")
+        print(f"The word was {hangman}")
         losses += 1
-        print("Wins: " + str(wins))
-        print("Losses: " + str(losses))
+        print(f"Wins: {wins}")
+        print(f"Losses: {losses}")
         redo = str(input("Do you want to play again? Y/N"))
         redo = redo.upper()
         if redo != "Y":
             playagain = False
     else:
-        print("Wins: " + str(wins))
-        print("Losses: " + str(losses))
+        print(f"Wins: {wins}")
+        print(f"Losses: {losses}")
         redo = str(input("Do you want to play again? Y/N"))
         redo = redo.upper()
         if redo != "Y":
             playagain = False
 print("Thanks for playing!")
+
+
+# In[ ]:
+
+
+
+
